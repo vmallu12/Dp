@@ -1,0 +1,39 @@
+#!/bin/sh
+
+unset SESSION_MANAGER
+unset DBUS_SESSION_BUS_ADDRESS
+
+export XDG_SESSION_TYPE=x11
+export XDG_CURRENT_DESKTOP=XFCE
+export DESKTOP_SESSION=xfce
+export XDG_CONFIG_HOME="$HOME/.config"
+
+# Load X resources
+[ -f "$HOME/.Xresources" ] && xrdb "$HOME/.Xresources"
+
+# Performance tweaks
+xset s off
+xset s noblank
+xset -dpms
+
+# Disable bell
+xset -b
+
+# Disable compositor (reduces lag)
+xfconf-query -c xfwm4 -p /general/use_compositing -s false >/dev/null 2>&1 || true
+
+# Start D-Bus if needed
+if command -v dbus-launch >/dev/null 2>&1; then
+    eval "$(dbus-launch --sh-syntax)"
+fi
+
+# PulseAudio
+pulseaudio --start >/dev/null 2>&1 || true
+
+# Set wallpaper (optional)
+if command -v xfdesktop >/dev/null 2>&1; then
+    xfdesktop --reload >/dev/null 2>&1 || true
+fi
+
+# Start XFCE
+exec startxfce4
