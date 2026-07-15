@@ -1,0 +1,66 @@
+# Git
+.git
+.github
+.gitignore
+
+# Documentation
+README.md
+LICENSE
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.swp
+
+# Editor
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+# Docker
+docker-compose.override.yml
+
+# Desktop user data
+home/
+
+# VNC
+*.pid
+*.sock
+*.lock
+
+# Cache
+.cache/
+.local/share/Trash/
+
+# Node
+node_modules/
+
+# Build
+dist/
+build/
+
+# Environment
+.env
+.env.local
+
+# Railway
+.railway/
+
+# Misc
+Thumbs.db
